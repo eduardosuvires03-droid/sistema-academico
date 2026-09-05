@@ -10,8 +10,18 @@ public class AlunoRepository {
 
     public void salvar(Aluno aluno){
         alunos.add(aluno);
+
     }
     public List<Aluno> listar(){
         return alunos;
+
+    }
+    public Aluno buscarPorId(Long id) {
+        for (Aluno aluno : alunos) {
+            if (aluno.getId().equals(id)) {
+                return aluno;
+            }
+        }
+        return null;
     }
 }

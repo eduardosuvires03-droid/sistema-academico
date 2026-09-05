@@ -1,9 +1,13 @@
 package br.edu.faex.academico;
 
 import br.edu.faex.academico.controller.AlunoController;
+import br.edu.faex.academico.controller.ProfessorController;
 import br.edu.faex.academico.model.Aluno;
+import br.edu.faex.academico.model.Professor;
 import br.edu.faex.academico.repository.AlunoRepository;
+import br.edu.faex.academico.repository.ProfessorRepository;
 import br.edu.faex.academico.service.AlunoService;
+import br.edu.faex.academico.service.ProfessorService;
 
 public class Main {
     static void main() {
@@ -22,7 +26,18 @@ public class Main {
             System.out.println("E-mail: " + aluno.getEmail());
             System.out.println("Ativo: " + aluno.isAtivo());
             System.out.println("-------------------------");
-        }
 
+            ProfessorRepository profRepo = new ProfessorRepository();
+            ProfessorService profService = new ProfessorService(profRepo);
+            ProfessorController profController = new ProfessorController(profService);
+
+            Professor prof1 = new Professor(1L, "Carlos Silva", "carlos@escola.com");
+            profController.cadastrar(prof1);
+
+            Professor profBusca = profController.buscarPorId(1L);
+            if (profBusca != null) {
+                System.out.println("Professor encontrado: " + profBusca.getNome());
+            }
+        }
     }
 }

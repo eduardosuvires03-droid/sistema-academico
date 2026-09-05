@@ -5,10 +5,19 @@ public class Professor {
     private String nome;
     private String email;
 
+    // Construtor vazio
     public Professor() {
     }
 
+    // Construtor sem ID
     public Professor(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
+
+    // Construtor com ID (O que corrige a linha vermelha no Main)
+    public Professor(Long id, String nome, String email) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
     }
@@ -23,6 +32,10 @@ public class Professor {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
